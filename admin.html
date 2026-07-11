@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cap'n Pete Booking Assistant</title>
+<link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<header><div class="wrap"><h1>Cap'n Pete Booking Helper</h1><p>Generate a customer email with the correct total and payment instructions.</p></div></header>
+<main>
+<section class="panel">
+<h2>Booking details</h2>
+<div class="grid">
+<div><label for="customerName">Customer name</label><input id="customerName" placeholder="e.g., Sarah Johnson"></div>
+<div><label for="customerEmail">Customer email</label><input id="customerEmail" type="email" placeholder="customer@example.com"></div>
+<div><label for="customerPhone">Customer phone</label><input id="customerPhone" type="tel" placeholder="(000) 000-0000"></div>
+<div><label for="guestCount">Number of guests</label><select id="guestCount"><option>1</option><option>2</option><option>3</option><option selected>4</option></select></div>
+<div class="full"><label for="excursion">Excursion</label><select id="excursion">
+<option value="Sunset Cruise">Sunset Cruise — 1 hour — $100</option>
+<option value="Warm Beach Outing">Warm Beach Outing — 2 hours — $150</option>
+<option value="Dinner in Allyn">Trip to Allyn — 2.5 hours — $200</option>
+<option value="Harstine Island Hiking Trip">Hiking Excursion — 2 hours — $150</option>
+<option value="Custom Trip">Custom Trip</option>
+</select></div>
+<div><label for="tripDate">Date</label><input id="tripDate" type="date"></div>
+<div><label for="tripTime">Departure time</label><input id="tripTime" type="time"></div>
+<div><label for="additionalHours">Additional hours</label><input id="additionalHours" type="number" min="0" step="1" value="0"><p class="help">$50 per additional hour where applicable.</p></div>
+<div class="amount-box"><label for="customAmount">Payment amount</label><input id="customAmount" type="number" min="0" step="0.01" placeholder="Enter custom amount">
+<div class="check-row"><input id="useCustomAmount" type="checkbox"><label for="useCustomAmount">Use custom amount</label></div><div class="amount-total" id="amountDisplay">$100.00</div></div>
+<div class="full"><label for="customerNotes">Customer notes</label><textarea id="customerNotes" placeholder="Birthday, mobility needs, food or drink plans, special requests, etc."></textarea></div>
+
+<div class="full"><label for="meetingInstructions">Meeting instructions</label><textarea id="meetingInstructions">Please meet at Herron Island North Beach 10 minutes before departure.</textarea></div>
+<div><label for="businessPhone">Business phone</label><input id="businessPhone" placeholder="253-222-9835"></div>
+<div><label for="senderName">Sender name</label><input id="senderName" value="Pete"></div>
+</div>
+<div class="button-row"><button class="primary" id="generateButton" type="button">Generate email</button><button class="secondary" id="resetButton" type="button">Clear booking</button></div>
+<div class="notice">This helper runs in the browser and does not save customer information to a server.</div>
+</section>
+<section class="panel">
+<h2>Generated customer email</h2>
+<label for="subjectOutput">Subject</label><input id="subjectOutput" readonly>
+<div style="height:.8rem"></div>
+<label>Message</label><div id="emailOutput" class="output">Enter the booking details, then select “Generate email.”</div>
+<div style="height:.8rem"></div>
+<label>Payment link</label><p id="paypalOutput" class="paypal-link">https://www.paypal.com/ncp/payment/SWPHT2MQ7J9YS</p>
+<div class="button-row"><button class="secondary" id="copySubjectButton" type="button">Copy subject</button><button class="secondary" id="copyMessageButton" type="button">Copy message</button><a class="button-link accent" id="openEmailButton" href="#">Open email app</a><a class="button-link primary" id="openPayPalButton" href="https://www.paypal.com/ncp/payment/SWPHT2MQ7J9YS" target="_blank" rel="noopener">Open PayPal link</a></div>
+<p class="status" id="status"></p>
+</section>
+</main>
+<script src="admin.js"></script>
+</body>
+</html>
